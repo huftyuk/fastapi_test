@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-dataval = "1"
+
 
 @app.get("/")
 def read_root():
@@ -10,6 +10,16 @@ def read_root():
 
 @app.get("/readdata")
 def readdata():
+    return {"dataval":dataval}
+
+@app.get("/setdata")
+def setdata():
+    dataval = "1"
+    return {"dataval":dataval}
+
+@app.get("/resetdata")
+def resetdata():
+    dataval = "0"
     return {"dataval":dataval}
 
 @app.get("/items/{item_id}")

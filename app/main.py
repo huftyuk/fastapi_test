@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
+global dataval
 
 @app.get("/")
 def read_root():

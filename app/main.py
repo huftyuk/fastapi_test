@@ -11,7 +11,7 @@ def read_root():
 
 @app.get("/readdata")
 def readdata():
-    A = r.get('dataval')
+    A = r.get('dataval').decode("utf-8")
     return {"dataval": A}
 
 @app.get("/setdata")

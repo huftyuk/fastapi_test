@@ -3,7 +3,7 @@ import redis
 
 app = FastAPI()
 
-global dataval
+r = redis.Redis(host='localhost', port=6379, db=0)
 
 @app.get("/")
 def read_root():
@@ -11,17 +11,18 @@ def read_root():
 
 @app.get("/readdata")
 def readdata():
-    return {"dataval":dataval}
+    A = r.get('dataval')
+    return {"dataval": A}
 
 @app.get("/setdata")
 def setdata():
-    dataval = "1"
-    return {"dataval":dataval}
+    r.set('dataval', '1')
+    return {"dataval":1}
 
 @app.get("/resetdata")
 def resetdata():
-    dataval = "0"
-    return {"dataval":dataval}
+    r.set('dataval', '0')
+    return {"dataval":0}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):

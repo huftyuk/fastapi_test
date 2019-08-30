@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 import redis
+import os
 
 app = FastAPI()
 
-r = redis.Redis(host="172.17.0.3", port=6379, db=0)
+REDIS_HOST = os.environ.get('REDIS_HOST') # PASSWORD is now set to 'aeb72hasow82ajl'
+
+r = redis.Redis(host=REDIS_HOST, port=6379, db=0)
 
 @app.get("/")
 def read_root():

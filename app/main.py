@@ -17,6 +17,10 @@ def readdata():
     A = r.get('dataval').decode("utf-8")
     return {"dataval": A}
 
+@app.get("/redishost")
+def redishost():
+    return {"dataval": REDIS_HOST}
+
 @app.get("/setdata")
 def setdata():
     r.set('dataval', '1')

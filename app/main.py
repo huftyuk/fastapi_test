@@ -18,7 +18,7 @@ def readdata():
     counter = 0
     while counter < 20:
         A = r.get('dataval').decode("utf-8")
-        if A = "1":
+        if A == "1":
             counter = 1000
         else:
             counter = counter +1

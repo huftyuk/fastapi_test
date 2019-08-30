@@ -24,12 +24,14 @@ def redishost():
 @app.get("/setdata")
 def setdata():
     A = r.set('dataval', '1')
-    return {"dataval":str(A)}
+    B = r.get('dataval').decode("utf-8")
+    return {"dataval":B}
 
 @app.get("/resetdata")
 def resetdata():
-    A  = r.set('dataval', '0')
-    return {"dataval":str(A)}
+    A = r.set('dataval', '0')
+    B = r.get('dataval').decode("utf-8")
+    return {"dataval":B}
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):

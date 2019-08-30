@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import redis
 import os
+import time
 
 app = FastAPI()
 
@@ -14,7 +15,11 @@ def read_root():
 
 @app.get("/readdata")
 def readdata():
-    A = r.get('dataval').decode("utf-8")
+    counter = 0
+    while counter < 10:
+        A = r.get('dataval').decode("utf-8")
+        counter = counter +1
+        time.sleep(1)
     return {"dataval": A}
 
 @app.get("/redishost")

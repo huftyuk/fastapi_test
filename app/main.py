@@ -3,7 +3,7 @@ import redis
 
 app = FastAPI()
 
-r = redis.Redis(host='localhost', port=6379, db=0)
+r = redis.Redis(host=172.17.0.3, port=6379, db=0)
 
 @app.get("/")
 def read_root():

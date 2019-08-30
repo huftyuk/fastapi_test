@@ -16,10 +16,13 @@ def read_root():
 @app.get("/readdata")
 def readdata():
     counter = 0
-    while counter < 10:
+    while counter < 20:
         A = r.get('dataval').decode("utf-8")
-        counter = counter +1
-        time.sleep(1)
+        if A = "1":
+            counter = 1000
+        else:
+            counter = counter +1
+            time.sleep(1)
     return {"dataval": A}
 
 @app.get("/redishost")
